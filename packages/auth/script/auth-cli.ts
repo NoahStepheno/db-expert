@@ -21,7 +21,7 @@ import { initAuth } from "../src/index";
 export const auth = initAuth({
   baseUrl: "http://localhost:3000",
   productionUrl: "http://localhost:3000",
-  secret: "secret",
-  discordClientId: "1234567890",
-  discordClientSecret: "1234567890",
+  secret: "61657234299196fd6bf629835420e2eb54bd55ace8abd41c9996ef1f2afd2590",
+  googleClientId: "1234567890",
+  googleClientSecret: "1234567890",
 });

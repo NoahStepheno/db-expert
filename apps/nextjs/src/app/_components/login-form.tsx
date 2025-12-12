@@ -31,14 +31,15 @@ export function LoginForm({
                 <Button
                   variant="outline"
                   type="button"
-                  onClick={() => {
-                    authClient.signIn
+                  onClick={async () => {
+                    const data = await authClient.signIn
                       .social({
                         provider: "google",
                       })
                       .catch((reason) => {
                         console.error(reason);
                       });
+                    console.log({ data });
                   }}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

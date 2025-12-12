@@ -1,8 +1,6 @@
 import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
-import { expo } from "@better-auth/expo";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { oAuthProxy } from "better-auth/plugins";
 
 import { db } from "@acme/db/client";
 
@@ -20,14 +18,16 @@ export function initAuth<
   const config = {
     database: drizzleAdapter(db, {
       provider: "pg",
+      transaction: true,
     }),
     baseURL: options.baseUrl,
     secret: options.secret,
     plugins: [
-      oAuthProxy({
-        productionURL: options.productionUrl,
-      }),
-      expo(),
+      // oAuthProxy({
+      //   productionURL: options.productionUrl,
+      //   currentURL: options.baseUrl,
+      // }),
+      // expo(),
       ...(options.extraPlugins ?? []),
     ],
     socialProviders: {
@@ -38,8 +38,8 @@ export function initAuth<
     },
     trustedOrigins: ["expo://"],
     onAPIError: {
-      onError(error, ctx) {
-        console.error("BETTER AUTH API ERROR", error, ctx);
+      onError(error) {
+        console.error("BETTER AUTH API ERROR", error);
       },
     },
   } satisfies BetterAuthOptions;

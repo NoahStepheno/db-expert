@@ -18,6 +18,9 @@ const config = {
 
   /** We already do linting and typechecking as separate tasks in CI */
   typescript: { ignoreBuildErrors: true },
+
+  /** Ensure pg package is bundled correctly */
+  serverExternalPackages: ["pg"],
 };
 
 export default config;
