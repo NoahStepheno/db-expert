@@ -51,7 +51,8 @@
     "AUTH_SECRET",
     "PORT",
     "GOOGLE_CLIENT_ID",
-    "GOOGLE_CLIENT_SECRET"
+    "GOOGLE_CLIENT_SECRET",
+    "GOOGLE_GEMINI_KEY"
   ],
   "globalPassThroughEnv": [
     "NODE_ENV",
